@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,17 +16,29 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
+
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@esm/index.d.ts"/>
+
+import { float64ndarray, typedndarray } from '@stdlib/types/ndarray';
 
 /**
-* Multiply each element in a one-dimensional double-precision floating-point ndarray by a scalar constant and add a scalar constant to each result.
+* Multiplies each element in a one-dimensional double-precision floating-point ndarray by a scalar constant and adds a scalar constant to each result.
 *
-* @module @stdlib/blas-ext-base-ndarray-daxpb
+* ## Notes
+*
+* -   The function expects the following ndarrays:
+*
+*     -   a one-dimensional input ndarray.
+*     -   a zero-dimensional ndarray containing the scalar constant to multiply.
+*     -   a zero-dimensional ndarray containing the scalar constant to add.
+*
+* @param arrays - array-like object containing ndarrays
+* @returns input ndarray
 *
 * @example
 * var Float64Vector = require( '@stdlib/ndarray-vector-float64' );
 * var scalar2ndarray = require( '@stdlib/ndarray-from-scalar' );
-* var daxpb = require( '@stdlib/blas-ext-base-ndarray-daxpb' );
 *
 * var x = new Float64Vector( [ -2.0, 1.0, 3.0, -5.0 ] );
 *
@@ -41,12 +53,9 @@
 * var out = daxpb( [ x, alpha, beta ] );
 * // returns <ndarray>[ -7.0, 8.0, 18.0, -22.0 ]
 */
-
-// MODULES //
-
-var main = require( './main.js' );
+declare function daxpb( arrays: [ float64ndarray, typedndarray<number>, typedndarray<number> ] ): float64ndarray;
 
 
 // EXPORTS //
 
-module.exports = main;
+export = daxpb;
