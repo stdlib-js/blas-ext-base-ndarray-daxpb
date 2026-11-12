@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,19 +16,11 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
 
-// MODULES //
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@esm/index.d.ts"/>
 
-var numelDimension = require( '@stdlib/ndarray-base-numel-dimension' );
-var getStride = require( '@stdlib/ndarray-base-stride' );
-var getOffset = require( '@stdlib/ndarray-base-offset' );
-var getData = require( '@stdlib/ndarray-base-data-buffer' );
-var strided = require( '@stdlib/blas-ext-base-daxpb' ).ndarray;
-var ndarraylike2scalar = require( '@stdlib/ndarray-base-ndarraylike2scalar' );
-
-
-// MAIN //
+import { float64ndarray, typedndarray } from '@stdlib/types/ndarray';
 
 /**
 * Multiplies each element in a one-dimensional double-precision floating-point ndarray by a scalar constant and adds a scalar constant to each result.
@@ -41,8 +33,8 @@ var ndarraylike2scalar = require( '@stdlib/ndarray-base-ndarraylike2scalar' );
 *     -   a zero-dimensional ndarray containing the scalar constant to multiply.
 *     -   a zero-dimensional ndarray containing the scalar constant to add.
 *
-* @param {ArrayLikeObject<Object>} arrays - array-like object containing ndarrays
-* @returns {ndarray} input ndarray
+* @param arrays - array-like object containing ndarrays
+* @returns input ndarray
 *
 * @example
 * var Float64Vector = require( '@stdlib/ndarray-vector-float64' );
@@ -61,19 +53,9 @@ var ndarraylike2scalar = require( '@stdlib/ndarray-base-ndarraylike2scalar' );
 * var out = daxpb( [ x, alpha, beta ] );
 * // returns <ndarray>[ -7.0, 8.0, 18.0, -22.0 ]
 */
-function daxpb( arrays ) {
-	var alpha;
-	var beta;
-	var x;
-
-	x = arrays[ 0 ];
-	alpha = ndarraylike2scalar( arrays[ 1 ] );
-	beta = ndarraylike2scalar( arrays[ 2 ] );
-	strided( numelDimension( x, 0 ), alpha, beta, getData( x ), getStride( x, 0 ), getOffset( x ) ); // eslint-disable-line max-len
-	return x;
-}
+declare function daxpb( arrays: [ float64ndarray, typedndarray<number>, typedndarray<number> ] ): float64ndarray;
 
 
 // EXPORTS //
 
-module.exports = daxpb;
+export = daxpb;
